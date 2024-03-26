@@ -54,25 +54,4 @@ public class EmployeeController {
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
-	// http://localhost:8080/employees/1
-	@PutMapping("/{id}")
-	public ResponseEntity<Void> updateEmployeeById(@PathVariable int id, @RequestBody Employee employee) {
-		employeeService.updateEmployeeById(id, employee);
-		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-	}
-
-
-	// http://localhost:8080/employees/1
-	@PatchMapping("/{id}")
-	public ResponseEntity<Employee> partialUpdateEmployeeById(@PathVariable int id, @RequestBody Employee employee) {
-	    try {
-	        Employee patchedEmployee = employeeService.partialEmployeeUpdateById(id, employee);
-	        return ResponseEntity.ok(patchedEmployee);
-	    } catch (RuntimeException e) {
-	        // Handle case when employee with given id is not found
-	        return ResponseEntity.notFound().build();
-	    }
-	}
-//dev1
-
 }
